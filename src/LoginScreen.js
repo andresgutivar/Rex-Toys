@@ -2,9 +2,10 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function FormTextExample() {
+
+export default function LoginScreen() {
   return (
-    <>
+    <div style={{ margin: "10px" ,display: "flex", flexDirection: "column", alignItems: "center" }}>
       <Form.Label htmlFor="inputEmail" srOnly>Email</Form.Label>
       <Form.Control
         type="email"
@@ -36,14 +37,6 @@ function FormTextExample() {
       <Button variant="primary" type="submit">
         Iniciar Sesión
       </Button>
-    </>      
-  );
-}
-
-export default function LoginScreen() {
-  return (
-    <div style={{ margin: "10px" ,display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <FormTextExample />
     </div>
   );
 }
