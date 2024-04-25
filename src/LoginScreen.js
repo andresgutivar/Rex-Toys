@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 export default function LoginScreen() {
   return (
     <div style={{ margin: "10px" ,display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <Form.Label htmlFor="inputEmail" srOnly>Email</Form.Label>
+      <Form.Label htmlFor="inputEmail" srOnly >Email</Form.Label>
       <Form.Control
         type="email"
         id="inputEmail"
@@ -39,3 +39,4 @@ export default function LoginScreen() {
     </div>
   );
 }
+
