@@ -20,14 +20,12 @@ export default function NavBarComponent() {
             <Nav.Link href="#action1">Tu carrito</Nav.Link>
             <Nav.Link href="#action2">Ayudanos</Nav.Link>
             <NavDropdown title="Categoria" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#action3">Bebes</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Juegos de Construccion</NavDropdown.Item>
+              <NavDropdown.Item href="#action5">Juegos de Salon</NavDropdown.Item>
+              <NavDropdown.Item href="#action6">Juegos de Oficio</NavDropdown.Item>
+              <NavDropdown.Item href="#action7">Peluches</NavDropdown.Item>
+              <NavDropdown.Item href="#action8">Muñecos y Muñecas</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form className="d-flex">
