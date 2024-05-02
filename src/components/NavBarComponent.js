@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export default function NavBarComponent() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary " fixed="top" bg="primary" data-bs-theme="dark">
+    <Navbar expand="lg" className="bg-body-tertiary " fixed="top" bg="primary" data-bs-theme="dark" style={{ borderBottom: '10px solid #6DC36D', padding: '10px' }}>
       <Container fluid>
         <Navbar.Brand>Rex Toys</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -29,13 +29,12 @@ export default function NavBarComponent() {
             <Nav.Link style={{ marginLeft: '470px' }} href="#action1">Tu carrito</Nav.Link>
             <Nav.Link href="#action2">Ayudanos</Nav.Link>
             <NavDropdown title="Categoria" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action3">Chicos</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
-                Another action
+                Chicas
               </NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">
-                Something else here
+                Unisex
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/Iniciar sesion">Inicia Sesión</Nav.Link>

@@ -17,20 +17,22 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: '#ffffff', // Color de fondo deseado
+    backgroundColor: 'black', // Color de fondo deseado
   },
   scroll: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
-    padding: '15px',
-    backgroundColor: '#ffffff', // Color de fondo deseado
+    padding: '60px',
+    backgroundColor: '#ffff', // Color de fondo deseado
   },
   view: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
     gap: '10px',
+    paddingtop: "50px",
+    
   },
 };
 
