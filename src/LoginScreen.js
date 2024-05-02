@@ -4,14 +4,16 @@ import Button from 'react-bootstrap/Button';
 
 export default function LoginScreen() {
   return (
-    <div style={{ margin: "10px" ,display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ margin: "80px", border:"2px",padding:"20px",witdh:"100000px"  ,display: "flex", flexDirection: "column", alignItems: "center" }}>
       <Form.Label htmlFor="inputEmail" srOnly >Email</Form.Label>
       <Form.Control
+      className="emailinput"
         type="email"
         id="inputEmail"
         placeholder="Email"
         aria-describedby="emailHelpBlock"
         sm="4"
+        style={{margin:"20px"}}
       />
       <Form.Text id="emailHelpBlock" muted>
         Your email must be a valid email address.
@@ -39,4 +41,11 @@ export default function LoginScreen() {
     </div>
   );
 }
+
+
+
+
+
+
+
 
