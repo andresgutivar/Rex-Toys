@@ -1,9 +1,12 @@
 import React from "react"
 import Form from 'react-bootstrap/Form';
 
-function FormTextExample() {
+
+
+
+export default function LoginScreen() {
   return (
-    <>
+    <div>
       <Form.Label htmlFor="inputPassword5">Email</Form.Label>
       <Form.Control
         type="text"
@@ -29,16 +32,6 @@ function FormTextExample() {
         and must not contain spaces, special characters, or emoji.
       </Form.Text>
 
-
-    </>      
-  );
-}
-
-
-export default function LoginScreen() {
-  return (
-    <div>
-      <FormTextExample />
     </div>
   );
 }
