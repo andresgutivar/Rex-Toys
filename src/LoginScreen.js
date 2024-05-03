@@ -1,51 +1,52 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
+
+  const cardStyle = {
+    backgroundColor: '#75F175',
+    width: '400px',
+    margin: 'auto',
+    marginTop: '100px',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'
+  };
+
+  const inputStyle = {
+    marginBottom: '20px'
+  };
+
   return (
-    <div style={{ margin: "80px", border:"2px",padding:"20px",witdh:"100000px"  ,display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <Form.Label htmlFor="inputEmail" srOnly >Email</Form.Label>
-      <Form.Control
-      className="emailinput"
-        type="email"
-        id="inputEmail"
-        placeholder="Email"
-        aria-describedby="emailHelpBlock"
-        sm="4"
-        style={{margin:"20px"}}
-      />
-      <Form.Text id="emailHelpBlock" muted>
-        Your email must be a valid email address.
-      </Form.Text>
-      
-      <br />
-      
-      <Form.Label htmlFor="inputPassword" srOnly>Password</Form.Label>
-      <Form.Control
-        type="password"
-        id="inputPassword"
-        placeholder="Password"
-        aria-describedby="passwordHelpBlock"
-        sm="4"
-      />
-      <Form.Text id="passwordHelpBlock" muted>
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-      </Form.Text>
-      
-      <br />
-      
-      <Button variant="primary" type="submit">
-        Iniciar Sesión
-      </Button>
-    </div>
+    <Card style={cardStyle}>
+      <div style={{ marginBottom: '20px' }}>
+        <h2 style={{ textAlign: 'center' }}>Inicio de Sesión</h2>
+      </div>
+      <Form>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Ingresa tu email"
+            style={inputStyle}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Contraseña</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Contraseña"
+            style={inputStyle}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit" style={{ width: '100%' }}>
+          Iniciar Sesión
+        </Button>
+      </Form>
+    </Card>
   );
 }
-
-
-
-
-
-
-
-
