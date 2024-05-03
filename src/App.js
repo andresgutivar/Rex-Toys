@@ -49,7 +49,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeScreen db={db} />} />
-      <Route path="/IniciarSesion" element={<LoginScreen db={db} />} />
+      <Route path="/Iniciar Sesion" element={<LoginScreen db={db} />} />
       <Route path="/Registrarse" element={<RegisterScreen db={db} />} />
       <Route path="/Comprar" element={<SurchaseScreen db={db} />} />
     </Routes>

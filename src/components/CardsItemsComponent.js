@@ -1,8 +1,5 @@
-import { doc, setDoc } from "firebase/firestore";
-
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { v4 as uuidv4 } from "uuid";
 
 export default function CardsItems(props) {
   return (
@@ -19,6 +16,7 @@ export default function CardsItems(props) {
           <Card.Title>{props.name}</Card.Title>
           <Card.Text>{props.description}</Card.Text>
           <Card.Text>{props.precio}</Card.Text>
+          <Button variant="primary">Ver producto</Button>
         </Card.Body>
       </Card>
     </>
