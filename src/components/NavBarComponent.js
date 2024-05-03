@@ -29,13 +29,14 @@ export default function NavBarComponent() {
             <Nav.Link style={{ marginLeft: '470px' }} href="#action1">Tu carrito</Nav.Link>
             <Nav.Link href="#action2">Ayudanos</Nav.Link>
             <NavDropdown title="Categoria" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Chicos</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Chicas
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action5">
-                Unisex
-              </NavDropdown.Item>
+
+              <NavDropdown.Item href="#action3">Bebes</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">Juegos de Construccion</NavDropdown.Item>
+              <NavDropdown.Item href="#action5">Juegos de Salon</NavDropdown.Item>
+              <NavDropdown.Item href="#action6">Juegos de Oficio</NavDropdown.Item>
+              <NavDropdown.Item href="#action7">Peluches</NavDropdown.Item>
+              <NavDropdown.Item href="#action8">Muñecos y Muñecas</NavDropdown.Item>
+
             </NavDropdown>
             <Nav.Link href="/Iniciar sesion">Inicia Sesión</Nav.Link>
             <Nav.Link href="/Registrarse">Registrate</Nav.Link>
