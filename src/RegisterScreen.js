@@ -30,6 +30,15 @@ export default function RegisterScreen(props) {
           />
         </Form.Group>
 
+        <Form.Group controlId="formBasicLastName">
+          <Form.Label>Apellido</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ingresa tu apellido"
+            style={{ marginBottom: '20px' }}
+          />
+        </Form.Group>
+
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
