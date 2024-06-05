@@ -13,6 +13,7 @@ import LoginScreen from "./LoginScreen";
 import React from "react";
 import RegisterScreen from "./RegisterScreen";
 import SurchaseScreen from "./SurchaseScreen";
+import AddProduct from "./AddProduct";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -52,6 +53,7 @@ function App() {
       <Route path="/Iniciar Sesion" element={<LoginScreen db={db} />} />
       <Route path="/Registrarse" element={<RegisterScreen db={db} />} />
       <Route path="/Comprar" element={<SurchaseScreen db={db} />} />
+      <Route path="/Agregar Producto" element={<AddProduct db={db} />} />
     </Routes>
   );
 }

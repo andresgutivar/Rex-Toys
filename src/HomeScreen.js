@@ -1,10 +1,11 @@
-//import { doc, setDoc } from "firebase/firestore"; No tocar
-
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 import CardsItems from "./components/CardsItemsComponent";
 import ContainerHomeComponent from "./components/ContainerHomeComponent";
 import Navbar from "./components/NavBarComponent";
-import React from "react";
 import butaca from "../src/imagenes/Butaca Booster Sin Respaldo Con Portavaso Disney.webp";
 import gimnasio from "../src/imagenes/Gimnasio Piano Actividades Luz Sonido Bebe.webp";
 import hipopotamo from "../src/imagenes/Hipopótamo Didáctico Aprende A Contar Con Sonido.webp";
@@ -14,22 +15,49 @@ import setmate from "../src/imagenes/Juego De Mate Petit Gourmet Con Mate Plasti
 import tambor from "../src/imagenes/Tambor Musical Con Luz Y Sonido.webp";
 import titere from "../src/imagenes/Titeres De Dedos Infantil De Bañera Para Bebe.webp";
 
-//import { v4 as uuidv4 } from "uuid"; No tocar
+export default function ImageUpload() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [preview, setPreview] = useState(null);
 
-export default function HomeScreen({ db }) {
-  // function addItem() {
-  //   const uuid = uuidv4();
-  //   console.log("llegaste");
-  //   setDoc(doc(db, "Productos", uuid), {
-  //     nombre: "holas",
-  //   });
-  // }
-  //No tocar esta parte, luego la usare para insertar datos a la base de datos.
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aquí puedes manejar el archivo (subirlo a un servidor, etc.)
+    console.log(selectedImage);
+  };
+
   return (
     <div style={{ paddingTop: "60px" }}>
       <Navbar />
-
       <ContainerHomeComponent style={{ marginTop: "10px" }}>
+        <Container style={{ maxWidth: '600px', marginTop: '50px' }}>
+          <Form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Sube una imagen</Form.Label>
+              <Form.Control type="file" accept="image/*" onChange={handleImageChange} />
+            </Form.Group>
+            {preview && (
+              <div className="image-preview">
+                <Image src={preview} thumbnail />
+              </div>
+            )}
+            <Button variant="primary" type="submit">
+              Subir
+            </Button>
+          </Form>
+        </Container>
+
         <CardsItems
           name={"Set de bebe"}
           description={"Set De Bebe Aprender A Comer Solo"}
@@ -66,7 +94,6 @@ export default function HomeScreen({ db }) {
           precio={"200.000$"}
           image={numeros}
         />
-
         <CardsItems
           name={"Tambor Musical"}
           description={"Tambor Musical Con Luz Y Sonido"}
@@ -79,12 +106,12 @@ export default function HomeScreen({ db }) {
           precio={"200.000$"}
           image={titere}
         />
-
+        
         <Button
           variant="primary"
           type="submit"
-          href="/Comprar"
-          style={{ width: "100%" }}
+          href="/Agregar Producto"
+          style={{ width: "100%", marginTop: "20px" }}
         >
           Agregar producto
         </Button>
