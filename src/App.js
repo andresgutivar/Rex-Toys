@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import {
-  addDoc,
   collection,
   getFirestore,
   onSnapshot,
@@ -9,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 
 import HomeScreen from "./HomeScreen";
+import ItemScreen from "./ItemScreen";
 import LoginScreen from "./LoginScreen";
 import React from "react";
 import RegisterScreen from "./RegisterScreen";
@@ -52,6 +52,7 @@ function App() {
       <Route path="/Iniciar Sesion" element={<LoginScreen db={db} />} />
       <Route path="/Registrarse" element={<RegisterScreen db={db} />} />
       <Route path="/Comprar" element={<SurchaseScreen db={db} />} />
+      <Route path="/Ver Producto" element={<ItemScreen  />} />
     </Routes>
   );
 }

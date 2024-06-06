@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import App from '../src/App';
+import App from "../src/App";
 import { BrowserRouter } from "react-router-dom";
 import ContainerComponent from "../src/components/containerComponent"
 import React from 'react';
