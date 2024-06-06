@@ -62,6 +62,14 @@ export default function SurchaseScreen() {
             style={inputStyle}
           />
         </Form.Group>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Contacto</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="N° de telefono de contacto"
+            style={inputStyle}
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Precio</Form.Label>
           <Form.Control type="number" placeholder="Precio" style={inputStyle} />

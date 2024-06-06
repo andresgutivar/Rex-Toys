@@ -14,49 +14,12 @@ import setbebe from "../src/imagenes/Set De Bebe Aprender A Comer Solo.webp";
 import setmate from "../src/imagenes/Juego De Mate Petit Gourmet Con Mate Plastico.webp";
 import tambor from "../src/imagenes/Tambor Musical Con Luz Y Sonido.webp";
 import titere from "../src/imagenes/Titeres De Dedos Infantil De Bañera Para Bebe.webp";
-
-export default function ImageUpload() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [preview, setPreview] = useState(null);
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Aquí puedes manejar el archivo (subirlo a un servidor, etc.)
-    console.log(selectedImage);
-  };
+export default function HomeScreen({  db  }){
 
   return (
     <div style={{ paddingTop: "60px" }}>
       <Navbar />
       <ContainerHomeComponent style={{ marginTop: "10px" }}>
-        <Container style={{ maxWidth: '600px', marginTop: '50px' }}>
-          <Form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Sube una imagen</Form.Label>
-              <Form.Control type="file" accept="image/*" onChange={handleImageChange} />
-            </Form.Group>
-            {preview && (
-              <div className="image-preview">
-                <Image src={preview} thumbnail />
-              </div>
-            )}
-            <Button variant="primary" type="submit">
-              Subir
-            </Button>
-          </Form>
-        </Container>
 
         <CardsItems
           name={"Set de bebe"}
