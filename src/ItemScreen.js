@@ -1,62 +1,124 @@
-import Accordion from "react-bootstrap/Accordion";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import ContainerComponent from "./components/ContainerHomeComponent";
-import Image from "react-bootstrap/Image";
+// src/ProductView.js
+
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@mui/material";
+
 import React from "react";
-import Row from "react-bootstrap/Row";
-import { View } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function ItemScreen() {
+const ItemScreen = () => {
   const location = useLocation();
   const { state } = location;
+  // Ejemplo de datos del producto y opiniones
+  const product = {
+    image: "https://via.placeholder.com/300",
+    name: "Nombre del Producto",
+    description: "Esta es una breve descripción del producto.",
+    price: "$100",
+  };
+
+  const reviews = [
+    { user: "Usuario 1", comment: "¡Excelente producto!" },
+    { user: "Usuario 2", comment: "Muy satisfecho con la compra." },
+    { user: "Usuario 3", comment: "No era lo que esperaba." },
+  ];
 
   return (
-    <Container style={{ flex: 1 }}>
-      <Col>
-        <Row
-          style={{
-            width: 1250,
-            alignItems: "flex-start",
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundColor: "#f5f5f5",
+        padding: 2,
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          width: "100%",
+          maxWidth: "1200px",
+          mb: 4,
+          boxShadow: 3,
+          backgroundColor: "white",
+        }}
+      >
+        <Box
+          component="img"
+          sx={{
+            width: "50%",
+            height: "auto",
+            maxHeight: 300,
+            objectFit: "cover",
+          }}
+          src={state.image}
+          alt={state.name}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "50%",
+            padding: 3,
           }}
         >
-          <Col
-            style={{
-              alignItems: "center",
-            }}
+          <Typography variant="h4" component="div" gutterBottom>
+            {state.name}
+          </Typography>
+          <Typography variant="body1" color="text.secondary" gutterBottom>
+            {state.description}
+          </Typography>
+          <Typography variant="h5" component="div" gutterBottom>
+            {state.precio}
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ alignSelf: "flex-start", mt: 2 }}
           >
-            <Image
-              style={{ height: 400, width: 610 }}
-              src={state.image}
-              rounded
-            />
-          </Col>
-          <Col style={{ flex: 1 }}>
-            <Card style={{ flex: 1 }}>
-              <Card.Body>
-                <Card.Title>{state.name}</Card.Title>
-                <Card.Text>{state.description}</Card.Text>
-                <Card.Text>{state.precio}</Card.Text>
-                <Button> Agregar a tu carrito</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Col>
-      <Col>
-        <Card>
-          <Card.Body>
-            <Card.Title>el producto es muy bueno</Card.Title>
-            <Card.Text>- fiorella chauran</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
-      <Col>
-        <Button>Calificar producto</Button>
-      </Col>
-    </Container>
+            Agregar al carrito
+          </Button>
+        </Box>
+      </Box>
+      <Paper
+        sx={{
+          width: "100%",
+          maxWidth: "1200px",
+          padding: 3,
+          boxShadow: 3,
+          backgroundColor: "white",
+        }}
+      >
+        <Typography variant="h6" component="div" gutterBottom>
+          Opiniones de usuarios
+        </Typography>
+        <List sx={{ maxHeight: "50vh", overflowY: "auto" }}>
+          {reviews.map((review, index) => (
+            <ListItem key={index} disableGutters>
+              <ListItemText primary={review.user} secondary={review.comment} />
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+    </Box>
   );
-}
+};
+
+export default ItemScreen;
