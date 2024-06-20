@@ -1,11 +1,6 @@
-// src/ProductView.js
-
 import {
   Box,
   Button,
-  Card,
-  CardContent,
-  CardMedia,
   List,
   ListItem,
   ListItemText,
@@ -20,12 +15,6 @@ const ItemScreen = () => {
   const location = useLocation();
   const { state } = location;
   // Ejemplo de datos del producto y opiniones
-  const product = {
-    image: "https://via.placeholder.com/300",
-    name: "Nombre del Producto",
-    description: "Esta es una breve descripción del producto.",
-    price: "$100",
-  };
 
   const reviews = [
     { user: "Usuario 1", comment: "¡Excelente producto!" },
