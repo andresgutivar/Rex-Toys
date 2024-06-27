@@ -11,7 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "./firebaseConfig.web";
+import { db } from "../App";
 import { v4 as uuid } from "uuid";
 
 // CRUD: Create, Read, Update, Delete

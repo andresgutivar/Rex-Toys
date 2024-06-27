@@ -1,84 +1,52 @@
-import React, { useState } from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
+import React, { useEffect, useState } from "react";
+
+import Button from "react-bootstrap/Button";
 import CardsItems from "./components/CardsItemsComponent";
+import Container from "react-bootstrap/Container";
 import ContainerHomeComponent from "./components/ContainerHomeComponent";
 import Navbar from "./components/NavBarComponent";
-import butaca from "../src/imagenes/Butaca Booster Sin Respaldo Con Portavaso Disney.webp";
-import gimnasio from "../src/imagenes/Gimnasio Piano Actividades Luz Sonido Bebe.webp";
-import hipopotamo from "../src/imagenes/Hipopótamo Didáctico Aprende A Contar Con Sonido.webp";
-import numeros from "../src/imagenes/Pote De Números Y Letras Magnéticas.webp";
-import setbebe from "../src/imagenes/Set De Bebe Aprender A Comer Solo.webp";
-import setmate from "../src/imagenes/Juego De Mate Petit Gourmet Con Mate Plastico.webp";
-import tambor from "../src/imagenes/Tambor Musical Con Luz Y Sonido.webp";
-import titere from "../src/imagenes/Titeres De Dedos Infantil De Bañera Para Bebe.webp";
-export default function HomeScreen({  db  }){
+import { readTableRealTime } from "./services/database";
+
+export default function HomeScreen({ db }) {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = readTableRealTime("Productos", setProductos);
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <div style={{ paddingTop: "60px" }}>
       <Navbar />
-      <ContainerHomeComponent style={{ marginTop: "10px" }}>
-
-        <CardsItems
-          name={"Set de bebe"}
-          description={"Set De Bebe Aprender A Comer Solo"}
-          precio={"200.000$"}
-          image={setbebe}
-        />
-        <CardsItems
-          name={"Gimnasio"}
-          description={"Gimnasio Piano Actividades Luz Sonido Bebe"}
-          precio={"200.000$"}
-          image={gimnasio}
-        />
-        <CardsItems
-          name={"Butaca"}
-          description={"Butaca Booster Sin Respaldo Con Portavaso Disney"}
-          precio={"200.000$"}
-          image={butaca}
-        />
-        <CardsItems
-          name={"Hipopotamo Didactico"}
-          description={"Hipopótamo Didáctico Aprende A Contar Con Sonido"}
-          precio={"20000$"}
-          image={hipopotamo}
-        />
-        <CardsItems
-          name={"Set de mate"}
-          description={"Juego De Mate Petit Gourmet Con Mate Plastico"}
-          precio={"200.000$"}
-          image={setmate}
-        />
-        <CardsItems
-          name={"Numeros y Letras"}
-          description={"Pote De Números Y Letras Magnéticas"}
-          precio={"200.000$"}
-          image={numeros}
-        />
-        <CardsItems
-          name={"Tambor Musical"}
-          description={"Tambor Musical Con Luz Y Sonido"}
-          precio={"200.000$"}
-          image={tambor}
-        />
-        <CardsItems
-          name={"Titere"}
-          description={"Titeres De Dedos Infantil De Bañera Para Bebe"}
-          precio={"200.000$"}
-          image={titere}
-        />
-        
-        <Button
-          variant="primary"
-          type="submit"
-          href="/Agregar Producto"
-          style={{ width: "100%", marginTop: "20px" }}
-        >
-          Agregar producto
-        </Button>
+      <ContainerHomeComponent
+        style={{ marginTop: "10px", textAlign: "center" }}
+      >
+        {productos.length === 0 ? (
+          <p style={{ textAlign: "center" }}>
+            No se ha registrado ningún producto.
+          </p>
+        ) : (
+          productos.map((producto, index) => (
+            <CardsItems
+              key={index}
+              name={producto.name}
+              description={producto.description}
+              precio={producto.price + "$"}
+              image={producto.image} // Aquí asumimos que producto.image contiene la URL en formato Base64
+            />
+          ))
+        )}
       </ContainerHomeComponent>
+      <Button
+        variant="primary"
+        type="submit"
+        href="/Agregar Producto"
+        style={{ width: "100%", marginTop: "20px" }}
+      >
+        Agregar producto
+      </Button>
     </div>
   );
 }

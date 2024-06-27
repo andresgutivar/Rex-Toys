@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const ItemScreen = () => {
+const ItemScreen = ({ db }) => {
   const location = useLocation();
   const { state } = location;
   // Ejemplo de datos del producto y opiniones
@@ -57,8 +57,8 @@ const ItemScreen = () => {
             maxHeight: 300,
             objectFit: "cover",
           }}
-          src={state.image}
-          alt={state.name}
+          src={state && state.image ? state.image : null}
+          alt={state && state.name ? state.name : null}
         />
         <Box
           sx={{
@@ -69,13 +69,13 @@ const ItemScreen = () => {
           }}
         >
           <Typography variant="h4" component="div" gutterBottom>
-            {state.name}
+            {state && state.name ? state.name : null}
           </Typography>
           <Typography variant="body1" color="text.secondary" gutterBottom>
-            {state.description}
+            {state && state.description ? state.description : null}
           </Typography>
           <Typography variant="h5" component="div" gutterBottom>
-            {state.precio}
+            {state && state.precio ? state.precio : null}
           </Typography>
           <Button
             variant="contained"

@@ -20,7 +20,7 @@ export default function CardsItems(props) {
         <Card.Body>
           <Card.Title>{props.name}</Card.Title>
           <Card.Text>{props.description}</Card.Text>
-          <Card.Text>{props.precio}</Card.Text>
+          <Card.Text>{props.precio + "$"}</Card.Text>
           <Button variant="primary" onClick={() => verProducto()}>
             Ver producto
           </Button>

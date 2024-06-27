@@ -7,13 +7,13 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
+import AddProduct from "./AddProduct";
 import HomeScreen from "./HomeScreen";
 import ItemScreen from "./ItemScreen";
 import LoginScreen from "./LoginScreen";
 import React from "react";
 import RegisterScreen from "./RegisterScreen";
 import SurchaseScreen from "./SurchaseScreen";
-import AddProduct from "./AddProduct";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -29,6 +29,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+export { db }; // Exportar db aquí
+
 function App() {
   const [datos, setDatos] = useState([]);
 
@@ -36,7 +38,7 @@ function App() {
     const unsubscribe = onSnapshot(
       query(collection(db, "Producto")),
       (data) => {
-        //coneccion a la base de datos
+        // Conexión a la base de datos
         let auxTempDatos = [];
         for (let i = 0; i < data.docs.length; i++) {
           auxTempDatos.push(data.docs[i].data());
@@ -53,11 +55,8 @@ function App() {
       <Route path="/Iniciar Sesion" element={<LoginScreen db={db} />} />
       <Route path="/Registrarse" element={<RegisterScreen db={db} />} />
       <Route path="/Comprar" element={<SurchaseScreen db={db} />} />
-
       <Route path="/Agregar Producto" element={<AddProduct db={db} />} />
-
-      <Route path="/Ver Producto" element={<ItemScreen  />} />
-
+      <Route path="/Ver Producto" element={<ItemScreen />} />
     </Routes>
   );
 }
