@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {
+  createDocument,
   readDocumentByIdRealTime,
   updateDocumentById,
 } from "./services/database";
@@ -22,6 +23,7 @@ const ItemScreen = ({ db }) => {
   const location = useLocation();
   const { state } = location;
   const [producto, setProducto] = useState(null);
+  const [carrito, setCarrito] = useState();
   const [showInput, setShowInput] = useState(false);
   const [newOpinion, setNewOpinion] = useState("");
 
@@ -49,7 +51,14 @@ const ItemScreen = ({ db }) => {
       }
     }
   };
-
+  async function agregarCarrito(producto) {
+    try {
+      await createDocument("carrito", producto, setCarrito);
+      alert("agregado exitosamente");
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <Box
       sx={{
@@ -118,6 +127,7 @@ const ItemScreen = ({ db }) => {
                 variant="contained"
                 color="primary"
                 sx={{ alignSelf: "flex-start", mt: 2 }}
+                onClick={() => agregarCarrito(producto)}
               >
                 Agregar al carrito
               </Button>

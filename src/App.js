@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 
 import AddProduct from "./AddProduct";
+import CarritoScreen from "./CarritoScreen";
 import HomeScreen from "./HomeScreen";
 import ItemScreen from "./ItemScreen";
 import LoginScreen from "./LoginScreen";
@@ -57,6 +58,7 @@ function App() {
       <Route path="/Comprar" element={<SurchaseScreen db={db} />} />
       <Route path="/Agregar Producto" element={<AddProduct db={db} />} />
       <Route path="/Ver Producto" element={<ItemScreen />} />
+      <Route path="/Carrito" element={<CarritoScreen />} />
     </Routes>
   );
 }
