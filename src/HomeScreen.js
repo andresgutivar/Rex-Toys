@@ -33,8 +33,11 @@ export default function HomeScreen({ db }) {
               key={index}
               name={producto.name}
               description={producto.description}
-              precio={producto.price + "$"}
-              image={producto.image} // Aquí asumimos que producto.image contiene la URL en formato Base64
+              price={producto.price + "$"}
+              image={producto.image}
+              id={producto.id}
+              opinions={producto.opinions}
+              // Aquí asumimos que producto.image contiene la URL en formato Base64
             />
           ))
         )}

@@ -26,6 +26,7 @@ export default function SurchaseScreen() {
   const [descripcion, setDescripcion] = useState("");
   const [contacto, setContacto] = useState("");
   const [precio, setPrecio] = useState("");
+  const [categoria, setCategoria] = useState("");
   const [imageBase64, setImageBase64] = useState(null);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -53,7 +54,9 @@ export default function SurchaseScreen() {
         description: descripcion,
         contact: contacto,
         price: precio,
+        category: categoria,
         image: imageBase64,
+        opinions: [],
       };
       await createDocument("Productos", data, () => {
         alert("Producto agregado");
@@ -115,6 +118,24 @@ export default function SurchaseScreen() {
             onChange={(e) => setPrecio(e.target.value)}
             required
           />
+        </Form.Group>
+        <Form.Group controlId="formCategoria">
+          <Form.Label>Categoria</Form.Label>
+          <Form.Control
+            as="select"
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
+            style={inputStyle}
+            required
+          >
+            <option value="">Selecciona una categoria</option>
+            <option value="Electrónica">Electrónica</option>
+            <option value="Ropa">Ropa</option>
+            <option value="Hogar">Hogar</option>
+            <option value="Deportes">Deportes</option>
+            <option value="Juguetes">Juguetes</option>
+            <option value="Otros">Libros</option>
+          </Form.Control>
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Sube una imagen</Form.Label>
